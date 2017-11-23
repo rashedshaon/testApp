@@ -7,14 +7,28 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item>Error {{ dataError }}</ion-item>
-    <ion-item>Latitude {{ latitude }}</ion-item>
-    <ion-item>Longitude {{ longitude }}</ion-item>
-  </ion-list>
-  My Last Changes...
-  Watching...
-  <div class="row" *ngFor="let item of items">
-    <span>Latitude {{ item.lat }} </span> <span> Longitude {{ item.long }}</span>
-  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 *ngIf="dataError">Error {{ dataError }}</ion-col> 
+      <ion-col col-6>Latitude {{ latitude }}</ion-col> 
+      <ion-col col-6>Longitude {{ longitude }}</ion-col>
+      <ion-col col-6>Latitude {{ watchLatitude }}</ion-col> 
+      <ion-col col-6>Longitude {{ watchLongitude }}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>TOTAL RUN: {{ distance }} KM</ion-col> 
+      <ion-col col-12>SPEED: {{speed}} KM/h</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-4>Latitude</ion-col> 
+      <ion-col col-4>Longitude</ion-col>
+      <ion-col col-4>Distance</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let item of items">
+      <ion-col col-4>{{ item.lat }}</ion-col> 
+      <ion-col col-4>{{ item.long }}</ion-col>
+      <ion-col col-4>{{ item.distance }}</ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
