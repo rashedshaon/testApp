@@ -11,7 +11,8 @@ export class HomePage {
   longitude:any;
   watchLatitude:any;
   watchLongitude:any;
-  error:any;
+  dataError:any;
+  items:any = [];
 
   constructor(
     public navCtrl: NavController, 
@@ -29,7 +30,7 @@ export class HomePage {
       this.latitude = resp.coords.latitude;
       this.longitude = resp.coords.longitude;
      }).catch((error) => {
-       this.error = error;
+       this.dataError = error;
        console.log('Error getting location', error);
      });
      
@@ -38,13 +39,14 @@ export class HomePage {
        // data can be a set of coordinates, or an error (if an error occurred).
        // data.coords.latitude
        // data.coords.longitude
-       this.watchLatitude = data.coords.latitude;
-       this.watchLongitude = data.coords.longitude;
+       //this.watchLatitude = data.coords.latitude;
+       //this.watchLongitude = data.coords.longitude;
+       if(this.watchLatitude != data.coords.latitude && this.watchLongitude != data.coords.longitude){
+         this.watchLatitude = data.coords.latitude;
+         this.watchLongitude = data.coords.longitude;
+         this.items.push({lat: this.watchLatitude, long:this.watchLongitude});
+       }
      });
-
-
-
-
   }
 
 }

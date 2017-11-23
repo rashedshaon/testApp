@@ -12,9 +12,8 @@
     <ion-item>Latitude {{ latitude }}</ion-item>
     <ion-item>Longitude {{ longitude }}</ion-item>
   </ion-list>
-  <ion-list>
-    <ion-item>Watch</ion-item>
-    <ion-item>Latitude {{ watchLatitude }}</ion-item>
-    <ion-item>Longitude {{ watchLongitude }}</ion-item>
-  </ion-list>
+  Watching...
+  <div class="row" *ngFor="let item of items">
+    <span>Latitude {{ item.lat }} </span> <span> Longitude {{ item.long }}</span>
+  </div>
 </ion-content>
